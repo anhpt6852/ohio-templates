@@ -66,7 +66,8 @@ class LoginForm extends ConsumerWidget {
                                         return tr(LocaleKeys.error_empty_error);
                                       }
                                       if (str.length < 10) {
-                                        return tr(LocaleKeys.error_invalid_phone);
+                                        return tr(
+                                            LocaleKeys.error_invalid_phone);
                                       }
                                       return null;
                                     },
