@@ -1,0 +1,11 @@
+{
+    "title": "",
+    "chooseLanguage": "Chọn ngôn ngữ",
+    "error": {
+        "empty_error": "Không được bỏ trống trường này",
+        "invalid_phone": "Số điện thoại không hợp lệ"
+    },
+    "usernameLabel": "Tên đăng nhập",
+    "passwordLabel": "Mật khẩu",
+    "loginButtonLabel": "Đăng nhập"
+ }

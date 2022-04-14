@@ -1,0 +1,11 @@
+{
+    "title": "",
+    "chooseLanguage": "Select language",
+    "error": {
+        "empty_error": "This field cannot be left blank",
+        "invalid_phone": "Invalid phone number"
+    },
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "loginButtonLabel": "Login"
+ }
