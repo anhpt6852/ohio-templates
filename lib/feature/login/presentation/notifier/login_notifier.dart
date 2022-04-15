@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/feature/login/data/repositories/login_repositories_impl.dart';
 import 'package:ohio_templates/feature/login/domain/repositories/login_repositories.dart';
 import 'package:ohio_templates/feature/login/presentation/notifier/state/login_state.dart';
+import 'package:ohio_templates/routes.dart';
 
 import '../../../../generated/locale_keys.g.dart';
 
@@ -20,5 +21,9 @@ class LoginNotifier extends StateNotifier<LoginState> {
     } else {
       state = LoginError(tr(LocaleKeys.error_invalid_phone));
     }
+  }
+  login(BuildContext context) {
+    Navigator.of(context)
+    .pushNamedAndRemoveUntil(AppRoutes.home, (Route<dynamic> route) => false);
   }
 }

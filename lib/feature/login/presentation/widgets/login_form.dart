@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ohio_templates/core/commons/presentation/common_button.dart';
+import 'package:ohio_templates/core/commons/presentation/common_text_form_field.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
-import 'package:ohio_templates/feature/commons/presentation/common_button.dart';
-import 'package:ohio_templates/feature/commons/presentation/common_text_form_field.dart';
 import 'package:ohio_templates/feature/login/presentation/notifier/login_notifier.dart';
 import 'package:ohio_templates/feature/login/presentation/notifier/state/login_state.dart';
 import 'package:ohio_templates/generated/locale_keys.g.dart';
@@ -91,7 +91,13 @@ class LoginForm extends ConsumerWidget {
                                             obscureText: true,
                                             onChanged: (str) {},
                                             onFieldSubmitted: (_) {},
-                                            validator: (str) {},
+                                            validator: (str) {
+                                              if (str == null || str.isEmpty) {
+                                                return tr(LocaleKeys
+                                                    .error_empty_error);
+                                              }
+                                              return null;
+                                            },
                                           )
                                         : const SizedBox.shrink(),
                                   ),
@@ -101,7 +107,14 @@ class LoginForm extends ConsumerWidget {
                                         tr(LocaleKeys.loginButtonLabel),
                                         style: t16M,
                                       ),
-                                      onPressed: () {}),
+                                      onPressed: () {
+                                        if (_formKey.currentState!.validate()) {
+                                          ref
+                                              .read(loginNotifierProvider
+                                                  .notifier)
+                                              .login(context);
+                                        }
+                                      }),
                                   const SizedBox(height: 16),
                                 ],
                               ),
