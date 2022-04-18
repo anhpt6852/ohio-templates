@@ -13,12 +13,13 @@ class UserProfileNotifier extends StateNotifier<UserProfileState> {
   UserProfileNotifier(ref)
       : userProfileRepositories = ref.read(UserProfileRepositoryProvider),
         super(const UserProfileInitial());
-  final userProfileStateProvider = StateProvider<UserModel>((ref) {
+
+  final userProfileProvider = StateProvider<UserModel>((ref) {
     return UserModel();
   });
 
-  Future fetchUserAvatar(WidgetRef ref) async {
-    ref.watch(userProfileStateProvider.state).state.userAvatar =
+  fetchUserAvatar(WidgetRef ref) {
+    ref.watch(userProfileProvider.state).state.userAvatar =
         'https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png';
   }
 }
