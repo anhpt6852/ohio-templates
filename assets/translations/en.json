@@ -3,7 +3,8 @@
     "chooseLanguage": "Select language",
     "error": {
         "empty_error": "This field cannot be left blank",
-        "invalid_phone": "Invalid phone number"
+        "invalid_phone": "Invalid phone number",
+        "image_error": "Cannot load image"
     },
     "usernameLabel": "Username",
     "passwordLabel": "Password",

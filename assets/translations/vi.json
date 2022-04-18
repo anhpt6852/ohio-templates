@@ -3,7 +3,8 @@
     "chooseLanguage": "Chọn ngôn ngữ",
     "error": {
         "empty_error": "Không được bỏ trống trường này",
-        "invalid_phone": "Số điện thoại không hợp lệ"
+        "invalid_phone": "Số điện thoại không hợp lệ",
+        "image_error": "Không thể tải được hình ảnh"
     },
     "usernameLabel": "Tên đăng nhập",
     "passwordLabel": "Mật khẩu",

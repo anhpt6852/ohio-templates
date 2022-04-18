@@ -5,6 +5,7 @@ abstract class  LocaleKeys {
   static const chooseLanguage = 'chooseLanguage';
   static const error_empty_error = 'error.empty_error';
   static const error_invalid_phone = 'error.invalid_phone';
+  static const error_image_error = 'error.image_error';
   static const error = 'error';
   static const usernameLabel = 'usernameLabel';
   static const passwordLabel = 'passwordLabel';

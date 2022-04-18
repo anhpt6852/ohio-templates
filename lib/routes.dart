@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ohio_templates/feature/home/presentation/home_page.dart';
 import 'package:ohio_templates/feature/login/presentation/login_page.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/user_profile_page.dart';
+import 'package:ohio_templates/feature/user_profile/presentation/widgets/user_profile_config.dart';
 
 class AppRoutes {
   static const login = '/login-page';
@@ -10,6 +11,9 @@ class AppRoutes {
   static const signInVerificationPage = '/sign-in-verification-page';
   static const userProfile = '/user-profile-page';
   static const home = '/home-page';
+  static const userProfileConfig = '/user-profile-config';
+
+  AppRoutes(Type userProfileConfig);
 }
 
 class AppRouter {
@@ -27,7 +31,12 @@ class AppRouter {
         );
       case AppRoutes.userProfile:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => UserProfilePage(),
+          builder: (_) => const UserProfilePage(),
+          settings: settings,
+        );
+      case AppRoutes.userProfileConfig:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const UserProfileConfig(),
           settings: settings,
         );
       default:
