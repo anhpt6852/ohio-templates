@@ -3,9 +3,27 @@
     "chooseLanguage": "Select language",
     "error": {
         "empty_error": "This field cannot be left blank",
-        "invalid_phone": "Invalid phone number"
+        "invalid_phone": "Invalid phone number",
+        "not_same_password": "Re-entered password does not match"
     },
-    "usernameLabel": "Username",
-    "passwordLabel": "Password",
-    "loginButtonLabel": "Login"
+    "login": {
+        "forget_password": {
+            "label": "Forgot password?"
+        },
+        "register": {
+            "label": "Not a member?",
+            "suggest": "Sign Up"
+        },
+        "usernameLabel": "Username",
+        "passwordLabel": "Password",
+        "loginButtonLabel": "Login"
+    },
+    "register": {
+        "title": "Create an account",
+        "fullname": "Fullname",
+        "phone": "Phone",
+        "password": "Password",
+        "re_password": "Confirm password",
+        "button_label": "Register"
+    }
  }

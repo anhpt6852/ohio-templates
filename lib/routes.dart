@@ -19,7 +19,7 @@ class AppRouter {
         );
       case AppRoutes.register:
         return MaterialPageRoute(
-          builder: (_) => const RegisterPage(),
+          builder: (_) => RegisterPage(),
           settings: settings,
         );
       case AppRoutes.home:

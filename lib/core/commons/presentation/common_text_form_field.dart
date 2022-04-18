@@ -25,7 +25,7 @@ class CommonTextFormField extends StatefulWidget {
   final bool? withAction;
   final Color? backgroundColor;
   final Color? textColor;
-  final AutovalidateMode? autovalidateMode;
+  // final AutovalidateMode? autovalidateMode;
   final BoxConstraints? prefixBoxConstrains;
   final BoxConstraints? sufflixBoxConstrains;
 
@@ -53,7 +53,7 @@ class CommonTextFormField extends StatefulWidget {
       this.backgroundColor,
       this.textColor,
       this.alignLabelWithHint,
-      this.autovalidateMode,
+      // this.autovalidateMode,
       this.sufflixBoxConstrains,
       this.prefixBoxConstrains})
       : super(key: key);
@@ -114,7 +114,7 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
               autofocus: (widget.autofocus)!,
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
-                errorStyle: t14M,
+isDense: false,                errorStyle: t14M,
                 border: InputBorder.none,
                 labelText: widget.labelText,
                 hintText: widget.hintText,
