@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:ohio_templates/feature/home/presentation/home_page.dart';
 import 'package:ohio_templates/feature/login/presentation/login_page.dart';
+import 'package:ohio_templates/feature/register/presentation/register_page.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/user_profile_page.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/widgets/user_profile_config.dart';
 
 class AppRoutes {
   static const login = '/login-page';
-  static const countriesPage = '/countries-page';
-  static const signInPhonePage = '/sign-in-phone-page';
-  static const signInVerificationPage = '/sign-in-verification-page';
-  static const userProfile = '/user-profile-page';
+  static const register = '/register-page';
   static const home = '/home-page';
   static const userProfileConfig = '/user-profile-config';
-
+  static const userProfile = '/user-profile-page';
   AppRoutes(Type userProfileConfig);
 }
 
 class AppRouter {
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+  static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute<dynamic>(
+        return MaterialPageRoute(
           builder: (_) => const LoginPage(),
           settings: settings,
         );
@@ -39,8 +37,12 @@ class AppRouter {
           builder: (_) => const UserProfileConfig(),
           settings: settings,
         );
-      default:
-        return null;
+      case AppRoutes.register:
+        return MaterialPageRoute(
+          builder: (_) => RegisterPage(),
+          settings: settings,
+        );
     }
+    return null;
   }
 }

@@ -17,8 +17,8 @@ void main() async {
   runApp(
     EasyLocalization(
         supportedLocales: const [
-          Locale('en'), // English
           Locale('vi'), // Vietnamese
+          Locale('en'), // English
         ],
         useOnlyLangCode: true,
         saveLocale: true,
