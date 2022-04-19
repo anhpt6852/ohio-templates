@@ -14,7 +14,7 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.ink[0],
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text(),
       ),
       body: Column(
         children: const [

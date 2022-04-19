@@ -26,5 +26,8 @@
         "password": "Password",
         "re_password": "Confirm password",
         "button_label": "Register"
+    },
+    "profile": {
+        "title": "User Profile"
     }
  }

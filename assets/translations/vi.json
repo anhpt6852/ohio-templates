@@ -26,5 +26,8 @@
         "password": "Mật khẩu",
         "re_password": "Xác nhận mật khẩu",
         "button_label": "Đăng ký"
+    },
+    "profile": {
+        "title": "Thông tin cá nhân"
     }
 }
