@@ -25,7 +25,10 @@ class ProfilePic extends ConsumerWidget {
             height: 100,
             width: 100,
             child: CircleAvatar(
-              child: Image.network(snapshot.data!.userAvatar!),
+              child: Image.network(
+                snapshot.data!.userAvatar!,
+                
+              ),
             ),
           );
         } else if (snapshot.hasError) {
@@ -34,7 +37,10 @@ class ProfilePic extends ConsumerWidget {
         }
 
         // By default, show a loading spinner.
-        return const CircularProgressIndicator();
+        return const Center(
+            child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+        ));
       },
     );
   }

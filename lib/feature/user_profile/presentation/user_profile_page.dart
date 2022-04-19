@@ -16,12 +16,15 @@ class UserProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Profile'),
       ),
-      body: Column(
-        children: const [
-          ProfilePic(),
-          Divider(height: 25),
-          UserProfileInfo(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: const [
+            ProfilePic(),
+            Divider(color: Colors.white),
+            UserProfileInfo(),
+          ],
+        ),
       ),
     );
   }
