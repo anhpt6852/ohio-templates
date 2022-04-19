@@ -15,7 +15,7 @@ class UserProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(LocaleKeys.profile_title),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: const [
