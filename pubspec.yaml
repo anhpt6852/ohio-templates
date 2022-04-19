@@ -21,6 +21,7 @@ dependencies:
   responsive_framework: ^0.1.7
   equatable: ^2.0.3
   timeago: ^3.2.2
+  top_snackbar_flutter: ^1.0.2
   
 dev_dependencies:
   build_runner:
