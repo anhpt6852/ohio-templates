@@ -20,8 +20,8 @@ class UserProfileNotifier extends StateNotifier<UserProfileState> {
     return UserModel();
   });
 
-  fetchUserInfo(WidgetRef ref) {
+  fetchUserInfo(WidgetRef ref) async {
     ref.watch(userProfileProvider.state).state =
-        userProfileRepositories.fetchUserInfo() as UserModel;
+        await userProfileRepositories.fetchUserInfo();
   }
 }

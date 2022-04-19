@@ -14,16 +14,21 @@ class ProfilePic extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var profileAvaState = ref.watch(userProfileStateProvider.notifier);
-    profileAvaState.fetchUserInfo(ref);
-    return SizedBox(
-      height: 100,
-      width: 100,
-      child: CircleAvatar(
-        child: Image.network(ref
-            .watch(profileAvaState.userProfileProvider.notifier)
-            .state
-            .userAvatar!),
-      ),
+
+    return FutureBuilder(
+      future: profileAvaState.fetchUserInfo(ref),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        return SizedBox(
+          height: 100,
+          width: 100,
+          child: CircleAvatar(
+            child: Image.network(ref
+                .watch(profileAvaState.userProfileProvider.notifier)
+                .state
+                .userAvatar!),
+          ),
+        );
+      },
     );
   }
 }
