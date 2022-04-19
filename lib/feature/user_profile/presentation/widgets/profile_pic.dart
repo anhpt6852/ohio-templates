@@ -15,13 +15,16 @@ class ProfilePic extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(userProfileStateProvider.notifier).fetchUserAvatar(ref);
+    var profileState = ref.watch(userProfileStateProvider.notifier);
+    profileState.fetchUserAvatar(ref);
     return SizedBox(
       height: 100,
       width: 100,
       child: CircleAvatar(
-        backgroundImage:
-            ref.watch(userProfileStateProvider.state).state.userAvatar,
+        child: Image.network(ref
+            .watch(profileState.userProfileProvider.notifier)
+            .state
+            .userAvatar!),
       ),
     );
   }
