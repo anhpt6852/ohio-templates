@@ -33,7 +33,7 @@ class UserProfileNotifier extends StateNotifier<UserProfileState> {
     ref.watch(userProfileProvider.state).state.userName = 'User1';
   }
 
-  fetchUseCountry(WidgetRef ref) {
+  fetchUserCountry(WidgetRef ref) {
     ref.watch(userProfileProvider.state).state.userCountry = 'USA';
   }
 

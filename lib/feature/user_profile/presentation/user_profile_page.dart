@@ -24,7 +24,7 @@ class UserProfilePage extends StatelessWidget {
       body: Column(
         children: [
           ProfilePic(),
-          const Spacer(),
+          SizedBox(height: 20),
           UserProfileInfo(),
         ],
       ),

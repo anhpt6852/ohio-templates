@@ -34,6 +34,6 @@ class LoginNotifier extends StateNotifier<LoginState> {
 
   login(BuildContext context) {
     Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.home, (Route<dynamic> route) => false);
+        AppRoutes.userProfile, (Route<dynamic> route) => false);
   }
 }

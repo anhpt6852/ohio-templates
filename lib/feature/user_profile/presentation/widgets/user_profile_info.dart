@@ -20,6 +20,10 @@ class UserProfileInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var profileInfoState = ref.watch(userProfileStateProvider.notifier);
+    profileInfoState.fetchUserName(ref);
+    profileInfoState.fetchUserDob(ref);
+    profileInfoState.fetchUserCountry(ref);
+    profileInfoState.fetchUserEmail(ref);
 
     return Column(children: [
       Padding(
