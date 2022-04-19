@@ -9,7 +9,8 @@ import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_p
 import 'package:ohio_templates/feature/user_profile/presentation/widgets/profile_pic.dart';
 import 'package:ohio_templates/generated/locale_keys.g.dart';
 
-final userInfoStateProvider = StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) {
+final userInfoStateProvider =
+    StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) {
   return UserProfileNotifier(ref);
 });
 
@@ -18,51 +19,57 @@ class UserProfileInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    profileInfoState = ref.watch(userProfileStateProvider.notifier);
-    
-    return Column(
-      children: [
-        Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: ListTile(
-              
-            )
-        //     child: Row(
-        //       children: [
-        //         Icon(Icons.person),
-        //         SizedBox(width: 20),
-        //         Expanded(
-        //             child: Text(UserModel.userName, style: t48M.copyWith())),
-        //       ],
-        //     )),
-        // ElevatedButton(
-        //     onPressed: () {},
-        //     child: Row(
-        //       children: [
-        //         Icon(Icons.cake),
-        //         SizedBox(width: 20),
-        //         Expanded(child: Text(UserModel.userDob, style: t48M.copyWith())),
-        //       ],
-        //     )),
-        // ElevatedButton(
-        //     onPressed: () {},
-        //     child: Row(
-        //       children: [
-        //         Icon(Icons.map),
-        //         SizedBox(width: 20),
-        //         Expanded(child: Text(UserModel.userCountry, style: t48M)),
-        //       ],
-        //     )),
-        // ElevatedButton(
-        //     onPressed: () {},
-        //     child: Row(
-        //       children: [
-        //         Icon(Icons.email),
-        //         SizedBox(width: 20),
-        //         Expanded(child: Text(UserModel.userEmail, style: t48M)),
-        //       ],
-        //     )),
-          );
-      ],
+    var profileInfoState = ref.watch(userProfileStateProvider.notifier);
+
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListTile(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          leading: Icon(Icons.person_add_alt_1),
+          title: Text(ref
+              .watch(profileInfoState.userProfileProvider.notifier)
+              .state
+              .userName!),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListTile(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          leading: Icon(Icons.cake),
+          title: Text(ref
+              .watch(profileInfoState.userProfileProvider.notifier)
+              .state
+              .userDob!),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListTile(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          leading: Icon(Icons.map),
+          title: Text(ref
+              .watch(profileInfoState.userProfileProvider.notifier)
+              .state
+              .userCountry!),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListTile(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          leading: Icon(Icons.email),
+          title: Text(ref
+              .watch(profileInfoState.userProfileProvider.notifier)
+              .state
+              .userEmail!),
+        ),
+      ),
+    ]);
   }
 }

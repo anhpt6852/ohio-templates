@@ -32,11 +32,11 @@ class AppRouter {
           builder: (_) => const UserProfilePage(),
           settings: settings,
         );
-      case AppRoutes.userProfileConfig:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => const UserProfileConfig(),
-          settings: settings,
-        );
+      // case AppRoutes.userProfileConfig:
+      //   return MaterialPageRoute<dynamic>(
+      //     builder: (_) => const UserProfileConfig(),
+      //     settings: settings,
+      //   );
       case AppRoutes.register:
         return MaterialPageRoute(
           builder: (_) => RegisterPage(),

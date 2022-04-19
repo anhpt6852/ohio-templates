@@ -15,7 +15,7 @@ class UserProfileRepositoriesImpl implements UserProfileRepositories {
 
   @override
   Future<UserModel> fetchUserDob() async {
-    return UserModel(userDob: DateFormat.y(1997));
+    return UserModel(userDob: '28/07/1997');
   }
 
   @override

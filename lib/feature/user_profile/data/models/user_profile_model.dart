@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
   String? userName;
-  DateFormat? userDob;
+  String? userDob;
   String? userCountry;
   String? userEmail;
   String? userAvatar;

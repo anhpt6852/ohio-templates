@@ -42,6 +42,6 @@ class UserProfileNotifier extends StateNotifier<UserProfileState> {
   }
 
   fetchUserDob(WidgetRef ref) {
-    ref.watch(userProfileProvider.state).state.userDob = DateFormat.y(1997);
+    ref.watch(userProfileProvider.state).state.userDob = '28/07/1997';
   }
 }
