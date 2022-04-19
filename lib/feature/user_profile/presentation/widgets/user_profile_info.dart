@@ -6,7 +6,8 @@ import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_p
 import 'package:ohio_templates/feature/user_profile/presentation/widgets/profile_pic.dart';
 
 final userInfoStateProvider =
-    StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) {
+    StateNotifierProvider.autoDispose<UserProfileNotifier, UserProfileState>(
+        (ref) {
   return UserProfileNotifier(ref);
 });
 
@@ -22,11 +23,12 @@ class UserProfileInfo extends ConsumerWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Column(children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(width: 1.0)),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
                 leading: const Icon(Icons.person_add_alt_1),
                 title: Text(ref
                     .watch(profileInfoState.userProfileProvider.notifier)
@@ -50,7 +52,7 @@ class UserProfileInfo extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: ListTile(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(16)),
                 leading: const Icon(Icons.map),
                 title: Text(ref
                     .watch(profileInfoState.userProfileProvider.notifier)
@@ -59,10 +61,10 @@ class UserProfileInfo extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(16)),
                 leading: const Icon(Icons.email),
                 title: Text(ref
                     .watch(profileInfoState.userProfileProvider.notifier)

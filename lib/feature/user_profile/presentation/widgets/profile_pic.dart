@@ -6,7 +6,8 @@ import 'package:ohio_templates/feature/user_profile/presentation/notifier/state/
 import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_profile_notifier.dart';
 
 final userProfileStateProvider =
-    StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) {
+    StateNotifierProvider.autoDispose<UserProfileNotifier, UserProfileState>(
+        (ref) {
   return UserProfileNotifier(ref);
 });
 
@@ -25,7 +26,9 @@ class ProfilePic extends ConsumerWidget {
             height: 100,
             width: 100,
             child: CircleAvatar(
-              child: Image.network(snapshot.data!.userAvatar!),
+              child: Image.network(
+                snapshot.data!.userAvatar!,
+              ),
             ),
           );
         } else if (snapshot.hasError) {
@@ -34,7 +37,10 @@ class ProfilePic extends ConsumerWidget {
         }
 
         // By default, show a loading spinner.
-        return const CircularProgressIndicator();
+        return const Center(
+            child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+        ));
       },
     );
   }
