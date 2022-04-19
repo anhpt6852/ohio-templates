@@ -15,11 +15,6 @@ class UserProfilePage extends StatelessWidget {
       backgroundColor: AppColors.ink[0],
       appBar: AppBar(
         title: Text('Profile'),
-        actions: [
-          CommonButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(AppRoutes.userProfileConfig))
-        ],
       ),
       body: Column(
         children: const [

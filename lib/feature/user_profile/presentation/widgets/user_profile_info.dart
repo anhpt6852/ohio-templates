@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/notifier/state/user_profile_state.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_profile_notifier.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/widgets/profile_pic.dart';
@@ -17,8 +18,9 @@ class UserProfileInfo extends ConsumerWidget {
     var profileInfoState = ref.watch(userProfileStateProvider.notifier);
 
     return FutureBuilder(
-        future: profileInfoState.fetchUserInfo(ref),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      future: profileInfoState.fetchUserInfo(ref),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
           return Column(children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -69,6 +71,14 @@ class UserProfileInfo extends ConsumerWidget {
               ),
             ),
           ]);
-        });
+        } else if (snapshot.hasError) {
+          return CommonSnackbar.show(context,
+              type: SnackbarType.error, message: snapshot.error.toString());
+        }
+
+        // By default, show a loading spinner.
+        return const CircularProgressIndicator();
+      },
+    );
   }
 }
