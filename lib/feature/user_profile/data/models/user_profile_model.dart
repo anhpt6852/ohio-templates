@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
-  final String? userName;
-  final String? userDob;
-  final String? userCountry;
-  final String? userEmail;
+  String? userName;
+  DateFormat? userDob;
+  String? userCountry;
+  String? userEmail;
   String? userAvatar;
 
   UserModel({

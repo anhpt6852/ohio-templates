@@ -5,6 +5,8 @@ import 'package:ohio_templates/core/commons/presentation/common_button.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/feature/user_profile/data/models/user_profile_model.dart';
 
+
+
 class UserProfileConfig extends StatelessWidget {
   const UserProfileConfig({Key? key}) : super(key: key);
 
@@ -39,7 +41,7 @@ class UserProfileConfig extends StatelessWidget {
                 Icon(Icons.person),
                 SizedBox(width: 20),
                 Expanded(
-                    child: Text(UserModel.userName, style: TextStyle.t48M)),
+                    child: Text(UserModel.userName, style: t48M)),
                 Icon(Icons.arrow_forward_ios)
               ],
             )),
@@ -49,7 +51,7 @@ class UserProfileConfig extends StatelessWidget {
               children: [
                 Icon(Icons.cake),
                 SizedBox(width: 20),
-                Expanded(child: Text(UserModel.userDob, style: TextStyle.t48M)),
+                Expanded(child: Text(UserModel.userDob, style: t48M)),
                 Icon(Icons.arrow_forward_ios)
               ],
             )),
@@ -60,7 +62,7 @@ class UserProfileConfig extends StatelessWidget {
                 Icon(Icons.map),
                 SizedBox(width: 20),
                 Expanded(
-                    child: Text(UserModel.userCountry, style: TextStyle.t48M)),
+                    child: Text(UserModel.userCountry, style: t48M)),
                 Icon(Icons.arrow_forward_ios)
               ],
             )),
@@ -71,7 +73,7 @@ class UserProfileConfig extends StatelessWidget {
                 Icon(Icons.email),
                 SizedBox(width: 20),
                 Expanded(
-                    child: Text(UserModel.userEmail, style: TextStyle.t48M)),
+                    child: Text(UserModel.userEmail, style: t48M)),
                 Icon(Icons.arrow_forward_ios)
               ],
             )),

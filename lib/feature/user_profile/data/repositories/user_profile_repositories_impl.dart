@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/feature/user_profile/data/models/user_profile_model.dart';
 import 'package:ohio_templates/feature/user_profile/domain/repositories/user_profile_repositories.dart';
@@ -14,7 +15,7 @@ class UserProfileRepositoriesImpl implements UserProfileRepositories {
 
   @override
   Future<UserModel> fetchUserDob() async {
-    return UserModel(userDob: 'mm/dd/yyyy');
+    return UserModel(userDob: DateFormat.y(1997));
   }
 
   @override
