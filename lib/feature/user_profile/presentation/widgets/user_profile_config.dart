@@ -1,11 +1,27 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/common_button.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/feature/user_profile/data/models/user_profile_model.dart';
+import 'package:ohio_templates/feature/user_profile/presentation/notifier/state/user_profile_state.dart';
+import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_profile_notifier.dart';
 
+// final profileConfigNotifierProvider =
+//     StateNotifierProvider<UserProfileNotifier, UserProfileState>(
+//         (ref) => UserProfileNotifier(ref));
+        
+// class ProfileConfig extends ConsumerWidget {
+//   ProfileConfig({Key? key}) : super(key: key);
 
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(),
+//       ),
+//     )
+//   }
+// }
 
 // class UserProfileConfig extends StatelessWidget {
 //   const UserProfileConfig({Key? key}) : super(key: key);

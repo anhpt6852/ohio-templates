@@ -22,9 +22,9 @@ class UserProfilePage extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: [
+        children: const [
           ProfilePic(),
-          SizedBox(height: 20),
+          Divider(height: 25),
           UserProfileInfo(),
         ],
       ),

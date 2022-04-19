@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/notifier/state/user_profile_state.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_profile_notifier.dart';
-import 'package:ohio_templates/generated/assets.gen.dart';
-import 'package:ohio_templates/generated/locale_keys.g.dart';
 
 final userProfileStateProvider =
     StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) {
@@ -11,12 +9,12 @@ final userProfileStateProvider =
 });
 
 class ProfilePic extends ConsumerWidget {
-  ProfilePic({Key? key}) : super(key: key);
+  const ProfilePic({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var profileAvaState = ref.watch(userProfileStateProvider.notifier);
-    profileAvaState.fetchUserAvatar(ref);
+    profileAvaState.fetchUserInfo(ref);
     return SizedBox(
       height: 100,
       width: 100,
