@@ -1,10 +1,11 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const title = 'title';
   static const chooseLanguage = 'chooseLanguage';
   static const error_empty_error = 'error.empty_error';
   static const error_invalid_phone = 'error.invalid_phone';
+  static const error_image_error = 'error.image_error';
   static const error_not_same_password = 'error.not_same_password';
   static const error = 'error';
   static const login_forget_password_label = 'login.forget_password.label';
@@ -23,5 +24,4 @@ abstract class  LocaleKeys {
   static const register_re_password = 'register.re_password';
   static const register_button_label = 'register.button_label';
   static const register = 'register';
-
 }
