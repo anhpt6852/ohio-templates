@@ -12,7 +12,10 @@ class UserProfileInfo extends ConsumerWidget {
     return ref.watch(fetchUserInfoProvider).when(
         data: ((data) {
           return Column(children: [
-            const Spacer(),
+            const Divider(
+              height: 24,
+              color: Colors.white,
+            ),
             Container(
               decoration: BoxDecoration(
                   color: const Color(0xFFF5F6F9),
@@ -69,7 +72,6 @@ class UserProfileInfo extends ConsumerWidget {
                 title: Text(data.userEmail!),
               ),
             ),
-            const Spacer(),
           ]);
         }),
         error: (e, stack) => CommonSnackbar.show(context,
