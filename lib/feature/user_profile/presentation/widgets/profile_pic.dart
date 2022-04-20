@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ohio_templates/core/commons/presentation/common_loading.dart';
 import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/controller/user_profile_controller.dart';
 
@@ -23,9 +24,6 @@ class ProfilePic extends ConsumerWidget {
         }),
         error: (e, stack) => CommonSnackbar.show(context,
             type: SnackbarType.error, message: e.toString()),
-        loading: () => const Center(
-                child: CircularProgressIndicator(
-              backgroundColor: Colors.white,
-            )));
+        loading: () => const CommonLoading());
   }
 }
