@@ -18,25 +18,24 @@ class UserProfilePage extends StatelessWidget {
         automaticallyImplyLeading: false,
         leading: GestureDetector(
             onTap: () => Navigator.pop(context),
-            child: const Icon(Icons.arrow_back_ios)), // Need to back to previous page. (Required almost page)
+            child: const Icon(Icons.arrow_back_ios)),
         centerTitle: true, // Move title to center
         title: Text(
-          tr(LocaleKeys.profile_title), // Missing tr() to render LocaleKeys...
+          tr(LocaleKeys.profile_title),
           style: t16M.copyWith(
-            color: AppColors.ink[500], // Add color to text. Default color is white like backgroundcolor app.
+            color: AppColors.ink[500],
           ),
         ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: const [
-            ProfilePic(),
+          children: [
+            const ProfilePic(),
             Divider(
-              color: Colors.white,
-              height: 24,
+              color: AppColors.ink[0],
             ),
-            UserProfileInfo(),
+            const UserProfileInfo(),
           ],
         ),
       ),

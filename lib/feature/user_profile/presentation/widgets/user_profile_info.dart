@@ -13,18 +13,14 @@ class UserProfileInfo extends ConsumerWidget {
     return ref.watch(fetchUserInfoProvider).when(
         data: ((data) {
           return Column(children: [
-<<<<<<< HEAD
-=======
             Divider(
-              // height: 24, Don't need that
-              color: AppColors.ink[0], //color: Colors.white, Limit use that. Should use AppColors (custom Color follow design)
+              color: AppColors.ink[0],
             ),
->>>>>>> e2a5d3f39fe4cbbc3388a7bbd9bcfc4cfd1f98e0
             Container(
               decoration: BoxDecoration(
                   color: AppColors.ink[100], //...
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(width: 1.2)),
+                  border: Border.all(width: 1.2, color: AppColors.ink[0]!)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.person_add_alt_1),
@@ -32,14 +28,13 @@ class UserProfileInfo extends ConsumerWidget {
               ),
             ),
             Divider(
-              // height: 16, 
               color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
                   color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(width: 1.2)),
+                  border: Border.all(width: 1.2, color: AppColors.ink[0]!)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.cake),
@@ -47,14 +42,13 @@ class UserProfileInfo extends ConsumerWidget {
               ),
             ),
             Divider(
-              // height: 16, 
               color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
                   color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(width: 1.2)),
+                  border: Border.all(width: 1.2, color: AppColors.ink[0]!)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.map),
@@ -62,14 +56,13 @@ class UserProfileInfo extends ConsumerWidget {
               ),
             ),
             Divider(
-              // height: 16, 
               color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
                   color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(width: 1.2)),
+                  border: Border.all(width: 1.2, color: AppColors.ink[0]!)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.email),
