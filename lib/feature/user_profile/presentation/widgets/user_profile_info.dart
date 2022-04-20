@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
-<<<<<<< HEAD
-import 'package:ohio_templates/feature/user_profile/presentation/notifier/state/user_profile_state.dart';
-import 'package:ohio_templates/feature/user_profile/presentation/notifier/user_profile_notifier.dart';
-import 'package:ohio_templates/feature/user_profile/presentation/widgets/profile_pic.dart';
-
-final userInfoStateProvider =
-    StateNotifierProvider.autoDispose<UserProfileNotifier, UserProfileState>(
-        (ref) {
-  return UserProfileNotifier(ref);
-});
-=======
 import 'package:ohio_templates/feature/user_profile/presentation/controller/user_profile_controller.dart';
->>>>>>> c2eac391b42f81f074abb3cd51b203c468718ab7
 
 class UserProfileInfo extends ConsumerWidget {
   const UserProfileInfo({Key? key}) : super(key: key);
@@ -64,7 +52,7 @@ class UserProfileInfo extends ConsumerWidget {
         }),
         error: (e, stack) => CommonSnackbar.show(context,
             type: SnackbarType.error, message: e.toString()),
-        loading: () => const  CircularProgressIndicator(
+        loading: () => const CircularProgressIndicator(
               backgroundColor: Colors.white,
             ));
   }
