@@ -12,43 +12,64 @@ class UserProfileInfo extends ConsumerWidget {
     return ref.watch(fetchUserInfoProvider).when(
         data: ((data) {
           return Column(children: [
+            const Spacer(),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(width: 1.0)),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  color: const Color(0xFFF5F6F9),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(width: 1.2)),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.person_add_alt_1),
                 title: Text(data.userName!),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            const Divider(
+              height: 16,
+              color: Colors.white,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xFFF5F6F9),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(width: 1.2)),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
                 leading: const Icon(Icons.cake),
                 title: Text(data.userDob!),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            const Divider(
+              height: 16,
+              color: Colors.white,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xFFF5F6F9),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(width: 1.2)),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
                 leading: const Icon(Icons.map),
                 title: Text(data.userCountry!),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            const Divider(
+              height: 16,
+              color: Colors.white,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xFFF5F6F9),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(width: 1.2)),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
                 leading: const Icon(Icons.email),
                 title: Text(data.userEmail!),
               ),
             ),
+            const Spacer(),
           ]);
         }),
         error: (e, stack) => CommonSnackbar.show(context,
