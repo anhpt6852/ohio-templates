@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/common_button.dart';
 import 'package:ohio_templates/core/commons/presentation/common_text_form_field.dart';
+import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
-import 'package:ohio_templates/feature/login/presentation/notifier/login_notifier.dart';
-import 'package:ohio_templates/feature/login/presentation/notifier/state/login_state.dart';
+import 'package:ohio_templates/feature/login/presentation/controller/login_controller.dart';
 import 'package:ohio_templates/generated/locale_keys.g.dart';
 import 'package:ohio_templates/routes.dart';
-
-final loginNotifierProvider = StateNotifierProvider<LoginNotifier, LoginState>(
-    (ref) => LoginNotifier(ref));
 
 class LoginForm extends ConsumerWidget {
   LoginForm({Key? key}) : super(key: key);
@@ -20,6 +17,7 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(loginControllerProvider);
     return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
@@ -53,15 +51,13 @@ class LoginForm extends ConsumerWidget {
                                   CommonTextFormField(
                                     labelText:
                                         tr(LocaleKeys.login_usernameLabel),
-                                    controller: ref
-                                        .watch(loginNotifierProvider.notifier)
-                                        .usernameController,
+                                    controller: controller.usernameController,
                                     keyboardType: TextInputType.phone,
                                     textInputAction: TextInputAction.done,
                                     onChanged: (str) {
-                                      ref
-                                          .read(loginNotifierProvider.notifier)
-                                          .checkInvalidPhone(_formKey, ref);
+                                      if (str.length < 10) {
+                                        controller.setIsValidateUsername(false);
+                                      }
                                     },
                                     validator: (str) {
                                       if (str == null || str.isEmpty) {
@@ -75,56 +71,56 @@ class LoginForm extends ConsumerWidget {
                                     },
                                   ),
                                   AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 500),
-                                    transitionBuilder: (Widget child,
-                                            Animation<double> animation) =>
-                                        SizeTransition(
-                                            child: child,
-                                            sizeFactor: animation),
-                                    child: ref.watch(loginNotifierProvider) ==
-                                            const LoginLoaded()
-                                        ? Column(
-                                            children: [
-                                              const SizedBox(height: 16),
-                                              CommonTextFormField(
-                                                labelText: tr(LocaleKeys
-                                                    .login_passwordLabel),
-                                                controller: ref
-                                                    .watch(loginNotifierProvider
-                                                        .notifier)
-                                                    .passwordController,
-                                                textInputAction:
-                                                    TextInputAction.done,
-                                                obscureText: true,
-                                                onChanged: (str) {},
-                                                onFieldSubmitted: (_) {},
-                                                validator: (str) {
-                                                  if (str == null ||
-                                                      str.isEmpty) {
-                                                    return tr(LocaleKeys
-                                                        .error_empty_error);
-                                                  }
-                                                  return null;
-                                                },
-                                              ),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: GestureDetector(
-                                                  onTap: () {},
-                                                  child: Text(
-                                                    tr(LocaleKeys
-                                                        .login_forget_password_label),
-                                                    style: t16M.apply(
-                                                        color:
-                                                            AppColors.primary),
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      transitionBuilder: (Widget child,
+                                              Animation<double> animation) =>
+                                          SizeTransition(
+                                              child: child,
+                                              sizeFactor: animation),
+                                      child: ref
+                                              .watch(controller
+                                                  .isValidateUsername.state)
+                                              .state
+                                          ? Column(
+                                              children: [
+                                                const SizedBox(height: 16),
+                                                CommonTextFormField(
+                                                  labelText: tr(LocaleKeys
+                                                      .login_passwordLabel),
+                                                  controller: controller
+                                                      .passwordController,
+                                                  textInputAction:
+                                                      TextInputAction.done,
+                                                  obscureText: true,
+                                                  onChanged: (str) {},
+                                                  onFieldSubmitted: (_) {},
+                                                  validator: (str) {
+                                                    if (str == null ||
+                                                        str.isEmpty) {
+                                                      return tr(LocaleKeys
+                                                          .error_empty_error);
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: GestureDetector(
+                                                    onTap: () {},
+                                                    child: Text(
+                                                      tr(LocaleKeys
+                                                          .login_forget_password_label),
+                                                      style: t16M.apply(
+                                                          color: AppColors
+                                                              .primary),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          )
-                                        : const SizedBox.shrink(),
-                                  ),
+                                              ],
+                                            )
+                                          : const SizedBox.shrink()),
                                   const SizedBox(height: 16),
                                   CommonButton(
                                       child: Text(
@@ -133,56 +129,65 @@ class LoginForm extends ConsumerWidget {
                                       ),
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
-                                          ref
-                                              .read(loginNotifierProvider
-                                                  .notifier)
-                                              .login(context);
+                                          if (controller.passwordController.text
+                                              .isEmpty) {
+                                            controller.setIsValidateUsername(
+                                                controller.passwordController
+                                                    .text.isEmpty);
+                                          } else {
+                                            ref.read(fetchUsernameProvider);
+                                            ref
+                                                .read(loginControllerProvider)
+                                                .login(context);
+                                          }
                                         }
                                       }),
                                   const SizedBox(height: 16),
                                   AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 500),
-                                    transitionBuilder: (Widget child,
-                                            Animation<double> animation) =>
-                                        SizeTransition(
-                                            child: child,
-                                            sizeFactor: animation),
-                                    child: ref.watch(loginNotifierProvider) ==
-                                            const LoginLoaded()
-                                        ? const SizedBox.shrink()
-                                        : Align(
-                                            alignment: Alignment.center,
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: RichText(
-                                                text: TextSpan(children: [
-                                                  TextSpan(
-                                                      text: tr(LocaleKeys
-                                                          .login_register_label),
-                                                      style: t14M.apply(
-                                                          color: AppColors
-                                                              .ink[400])),
-                                                  const WidgetSpan(
-                                                      child:
-                                                          SizedBox(width: 4)),
-                                                  WidgetSpan(
-                                                      child: GestureDetector(
-                                                          onTap: () => Navigator
-                                                              .pushNamed(
-                                                                  context,
-                                                                  AppRoutes
-                                                                      .register),
-                                                          child: Text(
-                                                              tr(LocaleKeys
-                                                                  .login_register_suggest),
-                                                              style: t14M.apply(
-                                                                  color: AppColors
-                                                                      .primary))))
-                                                ]),
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      transitionBuilder: (Widget child,
+                                              Animation<double> animation) =>
+                                          SizeTransition(
+                                              child: child,
+                                              sizeFactor: animation),
+                                      child: ref
+                                              .watch(controller
+                                                  .isValidateUsername.state)
+                                              .state
+                                          ? const SizedBox.shrink()
+                                          : Align(
+                                              alignment: Alignment.center,
+                                              child: GestureDetector(
+                                                onTap: () {},
+                                                child: RichText(
+                                                  text: TextSpan(children: [
+                                                    TextSpan(
+                                                        text: tr(LocaleKeys
+                                                            .login_register_label),
+                                                        style: t14M.apply(
+                                                            color: AppColors
+                                                                .ink[400])),
+                                                    const WidgetSpan(
+                                                        child:
+                                                            SizedBox(width: 4)),
+                                                    WidgetSpan(
+                                                        child: GestureDetector(
+                                                            onTap: () => Navigator
+                                                                .pushNamed(
+                                                                    context,
+                                                                    AppRoutes
+                                                                        .register),
+                                                            child: Text(
+                                                                tr(LocaleKeys
+                                                                    .login_register_suggest),
+                                                                style: t14M.apply(
+                                                                    color: AppColors
+                                                                        .primary))))
+                                                  ]),
+                                                ),
                                               ),
-                                            ),
-                                          ),
-                                  ),
+                                            )),
                                   const SizedBox(height: 16),
                                 ],
                               ),
