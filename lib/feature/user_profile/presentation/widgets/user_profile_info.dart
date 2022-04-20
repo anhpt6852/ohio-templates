@@ -12,16 +12,12 @@ class UserProfileInfo extends ConsumerWidget {
     return ref.watch(fetchUserInfoProvider).when(
         data: ((data) {
           return Column(children: [
-            const Divider(
-              height: 24,
-              color: Colors.white,
-            ),
             Container(
               decoration: BoxDecoration(
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.person_add_alt_1),
                 title: Text(data.userName!),
@@ -36,7 +32,7 @@ class UserProfileInfo extends ConsumerWidget {
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.cake),
                 title: Text(data.userDob!),
@@ -51,7 +47,7 @@ class UserProfileInfo extends ConsumerWidget {
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.map),
                 title: Text(data.userCountry!),
@@ -66,7 +62,7 @@ class UserProfileInfo extends ConsumerWidget {
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
                 leading: const Icon(Icons.email),
                 title: Text(data.userEmail!),

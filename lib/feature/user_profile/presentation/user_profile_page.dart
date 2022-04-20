@@ -20,7 +20,10 @@ class UserProfilePage extends StatelessWidget {
         child: Column(
           children: const [
             ProfilePic(),
-            Divider(color: Colors.white),
+            Divider(
+              color: Colors.white,
+              height: 24,
+            ),
             UserProfileInfo(),
           ],
         ),
