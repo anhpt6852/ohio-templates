@@ -53,12 +53,6 @@ class UserProfileInfo extends ConsumerWidget {
         }),
         error: (e, stack) => CommonSnackbar.show(context,
             type: SnackbarType.error, message: e.toString()),
-<<<<<<< HEAD
-        loading: () => const CircularProgressIndicator(
-              backgroundColor: Colors.white,
-            ));
-=======
         loading: () => const CommonLoading());
->>>>>>> da4339437f1804483c8b42ef38c61be1c95f310e
   }
 }
