@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/common_loading.dart';
 import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
+import 'package:ohio_templates/core/constant/colors.dart';
 import 'package:ohio_templates/feature/user_profile/presentation/controller/user_profile_controller.dart';
 
 class UserProfileInfo extends ConsumerWidget {
@@ -12,9 +13,16 @@ class UserProfileInfo extends ConsumerWidget {
     return ref.watch(fetchUserInfoProvider).when(
         data: ((data) {
           return Column(children: [
+<<<<<<< HEAD
+=======
+            Divider(
+              // height: 24, Don't need that
+              color: AppColors.ink[0], //color: Colors.white, Limit use that. Should use AppColors (custom Color follow design)
+            ),
+>>>>>>> e2a5d3f39fe4cbbc3388a7bbd9bcfc4cfd1f98e0
             Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFF5F6F9),
+                  color: AppColors.ink[100], //...
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -23,13 +31,13 @@ class UserProfileInfo extends ConsumerWidget {
                 title: Text(data.userName!),
               ),
             ),
-            const Divider(
-              height: 16,
-              color: Colors.white,
+            Divider(
+              // height: 16, 
+              color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFF5F6F9),
+                  color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -38,13 +46,13 @@ class UserProfileInfo extends ConsumerWidget {
                 title: Text(data.userDob!),
               ),
             ),
-            const Divider(
-              height: 16,
-              color: Colors.white,
+            Divider(
+              // height: 16, 
+              color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFF5F6F9),
+                  color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -53,13 +61,13 @@ class UserProfileInfo extends ConsumerWidget {
                 title: Text(data.userCountry!),
               ),
             ),
-            const Divider(
-              height: 16,
-              color: Colors.white,
+            Divider(
+              // height: 16, 
+              color: AppColors.ink[0],
             ),
             Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFF5F6F9),
+                  color: AppColors.ink[100],
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(width: 1.2)),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
