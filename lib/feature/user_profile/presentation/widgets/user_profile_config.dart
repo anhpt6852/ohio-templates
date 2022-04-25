@@ -9,12 +9,6 @@ import 'package:ohio_templates/feature/user_profile/data/models/user_profile_mod
 import 'package:ohio_templates/feature/user_profile/presentation/controller/user_profile_controller.dart';
 import 'package:ohio_templates/generated/locale_keys.g.dart';
 
-// final profileConfigNotifierProvider =
-//     StateNotifierProvider<UserProfileNotifier, UserProfileState>(
-//         (ref) => UserProfileNotifier(ref));
-// class UserProfileConfig extends StatelessWidget {
-//   const UserProfileConfig({Key? key}) : super(key: key);
-
 class UserProfileConfig extends ConsumerWidget {
   UserProfileConfig({Key? key}) : super(key: key);
 

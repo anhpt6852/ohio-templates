@@ -7,8 +7,7 @@ import 'package:ohio_templates/routes.dart';
 
 final loginControllerProvider = Provider.autoDispose((ref) {
   final loginRepositories = ref.watch(loginRepositoryProvider);
-  return LoginController(
-      ref: ref, loginRepositories: loginRepositories);
+  return LoginController(ref: ref, loginRepositories: loginRepositories);
 });
 
 final fetchUsernameProvider = FutureProvider.autoDispose((ref) {
@@ -32,11 +31,11 @@ class LoginController {
   final passwordController = TextEditingController();
 
   setIsValidateUsername(bool val) {
-    ref.read(isValidateUsername.state).state = val; 
+    ref.read(isValidateUsername.state).state = val;
   }
 
   login(BuildContext context) {
     Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.userProfile, (Route<dynamic> route) => false);
+        AppRoutes.home, (Route<dynamic> route) => false);
   }
 }

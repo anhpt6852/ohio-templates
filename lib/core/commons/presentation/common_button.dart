@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
 
-enum ButtonType {
-  primary,
-  disabled,
-  secondary,
-  icon
-}
+enum ButtonType { primary, disabled, secondary, icon }
 
 class CommonButton extends StatelessWidget {
   const CommonButton({
@@ -42,7 +37,7 @@ class CommonButton extends StatelessWidget {
         _backgroundColor = AppColors.primaryColors[500];
         textColor = AppColors.ink[0];
         break;
-      
+
       case ButtonType.disabled:
         _backgroundColor = Colors.transparent;
         textColor = AppColors.ink[400];
@@ -51,7 +46,7 @@ class CommonButton extends StatelessWidget {
         _backgroundColor = AppColors.primaryColors[200];
         textColor = AppColors.primaryColors[500];
         break;
-      
+
       case ButtonType.icon:
         _backgroundColor = AppColors.ink[500];
         textColor = AppColors.ink[400];

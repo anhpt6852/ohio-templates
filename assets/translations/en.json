@@ -27,6 +27,7 @@
         "title": "Create an account",
         "fullname": "Fullname",
         "phone": "Phone",
+        "email": "Email",
         "password": "Password",
         "re_password": "Confirm password",
         "button_label": "Register"
