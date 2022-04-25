@@ -129,38 +129,40 @@ class RegisterPage extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: ref.watch(controller.isRegisterLoading.state).state
-          ? const CommonLoading()
-          : Stack(
-              children: [
-                Scaffold(
-                  appBar: appBar,
-                  body: body,
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: appBar,
+            body: body,
+          ),
+          Positioned(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: CommonButton(
+                child: Text(
+                  tr(LocaleKeys.register_button_label),
+                  style: t16M,
                 ),
-                Positioned(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: CommonButton(
-                        child: Text(
-                          tr(LocaleKeys.register_button_label),
-                          style: t16M,
-                        ),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            controller.doRegister(context,
-                                phoneNumber: controller.phoneController.text,
-                                password: controller.passwordController.text,
-                                email: controller.emailController.text,
-                                fullname: controller.usernameController.text);
-                          }
-                        }),
-                  ),
-                ),
-              ],
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    controller.doRegister(context,
+                        phoneNumber: controller.phoneController.text,
+                        password: controller.passwordController.text,
+                        email: controller.emailController.text,
+                        fullname: controller.usernameController.text);
+                  } else {
+                    controller.buttonController.reset();
+                  }
+                },
+                btnController: controller.buttonController,
+              ),
             ),
+          ),
+        ],
+      ),
     );
   }
 }
