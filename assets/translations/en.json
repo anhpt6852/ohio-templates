@@ -26,6 +26,9 @@
         "email": "Email",
         "password": "Password",
         "re_password": "Confirm password",
-        "button_label": "Register"
+        "button_label": "Register",
+        "verify": {
+            "title": "Confirm email"
+        }
     }
  }

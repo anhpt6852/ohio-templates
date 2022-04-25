@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
 import 'package:ohio_templates/core/constant/networks.dart';
 
 final networkModuleProvider =
@@ -21,7 +22,7 @@ class NetworkModule {
       baseUrl: NetworkConstants.baseUrl,
       connectTimeout: NetworkConstants.connectionTimeout,
       receiveTimeout: NetworkConstants.receiveTimeout,
-      contentType: 'application/json; charset=utf-8',
+      contentType: 'application/json',
     );
   }
 
@@ -50,7 +51,9 @@ class NetworkModule {
       ..interceptors.add(
         InterceptorsWrapper(
           onRequest: (RequestOptions options,
-              RequestInterceptorHandler requestInterceptorHandler) async {},
+              RequestInterceptorHandler requestInterceptorHandler) async {
+            requestInterceptorHandler.next(options);
+          },
         ),
       )
       ..interceptors.add(RetryInterceptor(
@@ -70,9 +73,10 @@ class NetworkModule {
                     .response, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
       ))
       ..interceptors.add(
-        InterceptorsWrapper(
-            onError: (DioError e,
-                ErrorInterceptorHandler errorInterceptorHandler) async {}),
+        InterceptorsWrapper(onError: (DioError e,
+            ErrorInterceptorHandler errorInterceptorHandler) async {
+          errorInterceptorHandler.next(e);
+        }),
       );
 
     if (kDebugMode) {

@@ -6,7 +6,7 @@ registerProvider(
         required String password,
         required String email,
         required String fullname}) =>
-    FutureProvider.autoDispose((ref) {
+    Provider.autoDispose((ref) {
       final registerRepositories = ref.watch(registerRepositoryProvider);
       return registerRepositories.register(
           email: email,

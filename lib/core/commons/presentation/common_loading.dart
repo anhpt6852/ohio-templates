@@ -10,13 +10,16 @@ class CommonLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Platform.isAndroid
-            ? CircularProgressIndicator(
-                backgroundColor: color ?? AppColors.primary,
-              )
-            : CupertinoActivityIndicator(
-                color: color ?? AppColors.primary,
-              ));
+    return Container(
+      color: AppColors.ink[0],
+      child: Center(
+          child: Platform.isAndroid
+              ? CircularProgressIndicator(
+                  backgroundColor: color ?? AppColors.ink[0],
+                )
+              : CupertinoActivityIndicator(
+                  color: color ?? AppColors.ink[0],
+                )),
+    );
   }
 }

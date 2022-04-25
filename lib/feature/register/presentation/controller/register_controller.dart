@@ -1,9 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ohio_templates/core/utils/process_usecases.dart';
+import 'package:ohio_templates/core/commons/presentation/snack_bar.dart';
+import 'package:ohio_templates/core/services/logger.dart';
+import 'package:ohio_templates/feature/register/data/models/register_response.dart';
 import 'package:ohio_templates/feature/register/data/repositories/register_repositories_impl.dart';
 import 'package:ohio_templates/feature/register/domain/repositories/register_repositories.dart';
 import 'package:ohio_templates/feature/register/domain/usecases/register.dart';
+import 'package:ohio_templates/routes.dart';
 
 final registerControllerProvider = Provider.autoDispose((ref) {
   final registerRepositories = ref.watch(registerRepositoryProvider);
@@ -23,22 +27,32 @@ class RegisterController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController rePasswordController = TextEditingController();
 
-  doRegister(
+  final isRegisterLoading = StateProvider((ref) => false);
+
+  doRegister(context,
       {required String phoneNumber,
       required String password,
       required String email,
       required String fullname}) async {
+    ref.read(isRegisterLoading.state).state = true;
     try {
       var result = await ref.read(registerProvider(
           phoneNumber: phoneNumber,
           password: password,
           email: email,
-          fullname: fullname));
-      processUsecaseResult(
-          result: result,
-          onSuccess: (res) {
-            print(res);
-          });
-    } catch (e, stacktrace) {}
+          fullname: fullname)) as RegisterResponse;
+
+      CommonSnackbar.show(context,
+          message: result.msg, type: SnackbarType.success);
+      ref.read(isRegisterLoading.state).state = false;
+
+      Navigator.of(context).pushNamed(AppRoutes.verify);
+    } catch (e) {
+      ref.read(isRegisterLoading.state).state = false;
+      if (e is DioError) {
+        CommonSnackbar.show(context,
+            message: e.response!.data['msg'], type: SnackbarType.error);
+      }
+    }
   }
 }

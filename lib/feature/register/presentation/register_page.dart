@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/common_button.dart';
+import 'package:ohio_templates/core/commons/presentation/common_loading.dart';
 import 'package:ohio_templates/core/commons/presentation/common_text_form_field.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
@@ -116,8 +117,8 @@ class RegisterPage extends ConsumerWidget {
                 if (str == null || str.isEmpty) {
                   return tr(LocaleKeys.error_empty_error);
                 }
-                if (controller.rePasswordController !=
-                    controller.passwordController) {
+                if (controller.rePasswordController.text !=
+                    controller.passwordController.text) {
                   return tr(LocaleKeys.error_not_same_password);
                 }
                 return null;
@@ -128,36 +129,38 @@ class RegisterPage extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Stack(
-        children: [
-          Scaffold(
-            appBar: appBar,
-            body: body,
-          ),
-          Positioned(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: CommonButton(
-                  child: Text(
-                    tr(LocaleKeys.register_button_label),
-                    style: t16M,
+      child: ref.watch(controller.isRegisterLoading.state).state
+          ? const CommonLoading()
+          : Stack(
+              children: [
+                Scaffold(
+                  appBar: appBar,
+                  body: body,
+                ),
+                Positioned(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: CommonButton(
+                        child: Text(
+                          tr(LocaleKeys.register_button_label),
+                          style: t16M,
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            controller.doRegister(context,
+                                phoneNumber: controller.phoneController.text,
+                                password: controller.passwordController.text,
+                                email: controller.emailController.text,
+                                fullname: controller.usernameController.text);
+                          }
+                        }),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      controller.doRegister(
-                          phoneNumber: controller.phoneController.text,
-                          password: controller.passwordController.text,
-                          email: controller.emailController.text,
-                          fullname: controller.usernameController.text);
-                    }
-                  }),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }
