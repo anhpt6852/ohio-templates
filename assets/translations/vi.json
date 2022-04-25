@@ -23,6 +23,7 @@
         "title": "Đăng ký tài khoản",
         "fullname": "Họ và tên",
         "phone": "Số điện thoại",
+        "email": "Email",
         "password": "Mật khẩu",
         "re_password": "Xác nhận mật khẩu",
         "button_label": "Đăng ký"

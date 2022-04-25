@@ -15,33 +15,38 @@ class AppRoutes {
 }
 
 class AppRouter {
+  static Route _createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        final Animatable<double> _tween = Tween<double>(begin: 0.0, end: 1.0)
+            .chain(CurveTween(curve: Curves.linear));
+
+        return FadeTransition(
+          opacity: animation.drive(_tween),
+          child: child,
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 500),
+      reverseTransitionDuration: const Duration(milliseconds: 500),
+    );
+  }
+
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(
-          builder: (_) => const LoginPage(),
-          settings: settings,
-        );
+        return _createRoute(const LoginPage());
       case AppRoutes.home:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => const HomePage(),
-          settings: settings,
-        );
+        return _createRoute(const HomePage());
       case AppRoutes.userProfile:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => const UserProfilePage(),
-          settings: settings,
-        );
+        return _createRoute(const UserProfilePage());
       // case AppRoutes.userProfileConfig:
       //   return MaterialPageRoute<dynamic>(
       //     builder: (_) => const UserProfileConfig(),
       //     settings: settings,
       //   );
       case AppRoutes.register:
-        return MaterialPageRoute(
-          builder: (_) => RegisterPage(),
-          settings: settings,
-        );
+        return _createRoute(RegisterPage());
     }
     return null;
   }

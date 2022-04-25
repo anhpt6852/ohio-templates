@@ -2,7 +2,7 @@ class NetworkConstants {
   NetworkConstants._();
 
   // base url
-  static const String baseUrl = '';
+  static const String baseUrl = 'http://localhost:3030/api/auth';
 
   // receiveTimeout
   static const int receiveTimeout = 5000;
