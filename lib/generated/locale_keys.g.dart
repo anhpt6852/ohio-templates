@@ -5,6 +5,10 @@ abstract class  LocaleKeys {
   static const chooseLanguage = 'chooseLanguage';
   static const error_empty_error = 'error.empty_error';
   static const error_invalid_phone = 'error.invalid_phone';
+  static const error_invalid_name = 'error.invalid_name';
+  static const error_invalid_dob = 'error.invalid_dob';
+  static const error_invalid_email = 'error.invalid_email';
+  static const error_invalid_country = 'error.invalid_country';
   static const error_image_error = 'error.image_error';
   static const error_not_same_password = 'error.not_same_password';
   static const error = 'error';
@@ -25,6 +29,11 @@ abstract class  LocaleKeys {
   static const register_button_label = 'register.button_label';
   static const register = 'register';
   static const profile_title = 'profile.title';
+  static const profile_name = 'profile.name';
+  static const profile_dob = 'profile.dob';
+  static const profile_email = 'profile.email';
+  static const profile_country = 'profile.country';
+  static const profile_save = 'profile.save';
   static const profile = 'profile';
 
 }

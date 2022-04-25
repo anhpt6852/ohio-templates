@@ -4,6 +4,10 @@
     "error": {
         "empty_error": "Không được bỏ trống trường này",
         "invalid_phone": "Số điện thoại không hợp lệ",
+        "invalid_name": "Tên không hợp lệ",
+        "invalid_dob": "Ngày sinh không hợp lệ",
+        "invalid_email": "Email không hợp lệ",
+        "invalid_country": "Quốc gia không hợp lệ",
         "image_error": "Không thể tải được hình ảnh",
         "not_same_password": "Mật khẩu nhập lại không khớp"
     },
@@ -28,6 +32,11 @@
         "button_label": "Đăng ký"
     },
     "profile": {
-        "title": "Thông tin cá nhân"
+        "title": "Thông tin cá nhân",
+        "name": "Họ và tên",
+        "dob": "Ngày sinh",
+        "email": "Thư điện tử",
+        "country": "Quốc gia",
+        "save": "Lưu"
     }
 }

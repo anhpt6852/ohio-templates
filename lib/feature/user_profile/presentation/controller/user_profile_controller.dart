@@ -17,6 +17,21 @@ final fetchUserInfoProvider = FutureProvider.autoDispose((ref) {
 class UserProfileController {
   final ProviderRef ref;
   final UserProfileRepositories userProfileRepositories;
+  final isValidateName = StateProvider.autoDispose<bool>((ref) {
+    return false;
+  });
+
+  final isValidatDob = StateProvider.autoDispose<bool>((ref) {
+    return false;
+  });
+
+  final isValidateEmail = StateProvider.autoDispose<bool>((ref) {
+    return false;
+  });
+
+  final isValidatCountry = StateProvider.autoDispose<bool>((ref) {
+    return false;
+  });
 
   UserProfileController(
       {required this.ref, required this.userProfileRepositories});
@@ -24,6 +39,5 @@ class UserProfileController {
   final profileNameController = TextEditingController();
   final profileEmailController = TextEditingController();
   final profileCountryController = TextEditingController();
-  // final profileDobController =
-
+  final profileDobController = TextEditingController();
 }
