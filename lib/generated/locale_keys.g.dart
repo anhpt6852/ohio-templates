@@ -28,6 +28,8 @@ abstract class LocaleKeys {
   static const register_password = 'register.password';
   static const register_re_password = 'register.re_password';
   static const register_button_label = 'register.button_label';
+  static const register_verify_title = 'register.verify.title';
+  static const register_verify = 'register.verify';
   static const register = 'register';
   static const profile_title = 'profile.title';
   static const profile_name = 'profile.name';

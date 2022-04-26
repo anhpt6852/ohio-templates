@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/commons/presentation/common_button.dart';
+import 'package:ohio_templates/core/commons/presentation/common_loading.dart';
 import 'package:ohio_templates/core/commons/presentation/common_text_form_field.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
@@ -116,8 +117,8 @@ class RegisterPage extends ConsumerWidget {
                 if (str == null || str.isEmpty) {
                   return tr(LocaleKeys.error_empty_error);
                 }
-                if (controller.rePasswordController !=
-                    controller.passwordController) {
+                if (controller.rePasswordController.text !=
+                    controller.passwordController.text) {
                   return tr(LocaleKeys.error_not_same_password);
                 }
                 return null;
@@ -141,19 +142,23 @@ class RegisterPage extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: CommonButton(
-                  child: Text(
-                    tr(LocaleKeys.register_button_label),
-                    style: t16M,
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      controller.doRegister(
-                          phoneNumber: controller.phoneController.text,
-                          password: controller.passwordController.text,
-                          email: controller.emailController.text,
-                          fullname: controller.usernameController.text);
-                    }
-                  }),
+                child: Text(
+                  tr(LocaleKeys.register_button_label),
+                  style: t16M,
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    controller.doRegister(context,
+                        phoneNumber: controller.phoneController.text,
+                        password: controller.passwordController.text,
+                        email: controller.emailController.text,
+                        fullname: controller.usernameController.text);
+                  } else {
+                    controller.buttonController.reset();
+                  }
+                },
+                btnController: controller.buttonController,
+              ),
             ),
           ),
         ],

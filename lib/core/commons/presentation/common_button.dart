@@ -2,22 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ohio_templates/core/config/theme.dart';
 import 'package:ohio_templates/core/constant/colors.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 enum ButtonType { primary, disabled, secondary, icon }
 
 class CommonButton extends StatelessWidget {
-  const CommonButton({
-    Key? key,
-    this.child,
-    this.buttonType = ButtonType.primary,
-    this.text,
-    required this.onPressed,
-    this.textStyle,
-    this.height = 48,
-    this.width = double.infinity,
-    this.padding = EdgeInsets.zero,
-    this.backgroudColor,
-  }) : super(key: key);
+  const CommonButton(
+      {Key? key,
+      this.child,
+      this.buttonType = ButtonType.primary,
+      this.text,
+      required this.onPressed,
+      this.textStyle,
+      this.height = 48,
+      this.width = double.infinity,
+      this.padding = EdgeInsets.zero,
+      this.backgroudColor,
+      required this.btnController})
+      : super(key: key);
   final Widget? child;
   final String? text;
   final ButtonType buttonType;
@@ -27,6 +29,7 @@ class CommonButton extends StatelessWidget {
   final double height;
   final EdgeInsetsGeometry padding;
   final Color? backgroudColor;
+  final RoundedLoadingButtonController btnController;
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +62,15 @@ class CommonButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: CupertinoButton(
+      child: RoundedLoadingButton(
         color: backgroudColor ?? _backgroundColor,
-        padding: padding,
-        minSize: 0,
         child: child ??
             Text(
               text ?? '',
               style: t16M.apply(color: textColor),
             ),
         onPressed: buttonType == ButtonType.disabled ? null : onPressed,
+        controller: btnController,
       ),
     );
   }

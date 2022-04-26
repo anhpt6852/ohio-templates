@@ -30,7 +30,10 @@
         "email": "Email",
         "password": "Mật khẩu",
         "re_password": "Xác nhận mật khẩu",
-        "button_label": "Đăng ký"
+        "button_label": "Đăng ký",
+        "verify": {
+            "title": "Xác nhận email"
+        }
     },
     "profile": {
         "title": "Thông tin cá nhân",

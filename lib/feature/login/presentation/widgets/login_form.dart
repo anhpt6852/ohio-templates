@@ -123,25 +123,29 @@ class LoginForm extends ConsumerWidget {
                                           : const SizedBox.shrink()),
                                   const SizedBox(height: 16),
                                   CommonButton(
-                                      child: Text(
-                                        tr(LocaleKeys.login_loginButtonLabel),
-                                        style: t16M,
-                                      ),
-                                      onPressed: () {
-                                        if (_formKey.currentState!.validate()) {
-                                          if (controller.passwordController.text
-                                              .isEmpty) {
-                                            controller.setIsValidateUsername(
-                                                controller.passwordController
-                                                    .text.isEmpty);
-                                          } else {
-                                            ref.read(fetchUsernameProvider);
-                                            ref
-                                                .read(loginControllerProvider)
-                                                .login(context);
-                                          }
+                                    child: Text(
+                                      tr(LocaleKeys.login_loginButtonLabel),
+                                      style: t16M,
+                                    ),
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        if (controller
+                                            .passwordController.text.isEmpty) {
+                                          controller.setIsValidateUsername(
+                                              controller.passwordController.text
+                                                  .isEmpty);
+                                        } else {
+                                          ref.read(fetchUsernameProvider);
+                                          ref
+                                              .read(loginControllerProvider)
+                                              .login(context);
                                         }
-                                      }),
+                                      } else {
+                                        controller.buttonController.reset();
+                                      }
+                                    },
+                                    btnController: controller.buttonController,
+                                  ),
                                   const SizedBox(height: 16),
                                   AnimatedSwitcher(
                                       duration:

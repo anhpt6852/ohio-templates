@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ohio_templates/core/results/failures.dart';
 import 'package:ohio_templates/core/services/network_module.dart';
@@ -16,7 +17,7 @@ class RegisterRepositoriesImpl implements RegisterRepositories {
   RegisterRepositoriesImpl(this.ref);
 
   @override
-  Future<Either<Failure, RegisterResponse>> register(
+  Future<RegisterResponse> register(
       {required String phoneNumber,
       required String password,
       required String email,
@@ -29,14 +30,10 @@ class RegisterRepositoriesImpl implements RegisterRepositories {
     };
     var networkModule = ref.read(networkModuleProvider);
 
-    try {
-      var response = await networkModule.post(Endpoints.register, data: body);
+    var response = await networkModule.post(Endpoints.register, data: body);
 
-      var result = response.body;
+    var result = response.data;
 
-      return Right(RegisterResponse.fromJson(result));
-    } catch (e) {
-      return Left(SystemFailure());
-    }
+    return RegisterResponse.fromJson(result);
   }
 }
